@@ -1,22 +1,55 @@
+@keyframes pulseBtn {
+  0%{transform:scale(1);box-shadow:0 0 0 0 rgba(255,255,255,0.7)}
+  70%{transform:scale(1.05);box-shadow:0 0 0 10px rgba(255,255,255,0)}
+  100%{transform:scale(1);box-shadow:0 0 0 0 rgba(255,255,255,0)}
+}
+@keyframes glow {
+  0%{text-shadow:0 0 5px rgba(255,255,255,0.5)}
+  50%{text-shadow:0 0 20px rgba(255,255,255,0.9), 0 0 30px rgba(255,255,255,0.6)}
+  100%{text-shadow:0 0 5px rgba(255,255,255,0.5)}
+}
+@keyframes cardEntry {
+  from{opacity:0;transform:translateY(20px) scale(0.95)}
+  to{opacity:1;transform:translateY(0) scale(1)}
+}
+#welcomePage h1{
+  animation: up 0.8s ease, glow 3s infinite ease-in-out !important;
+}
+#welcomePage button{
+  animation: pulseBtn 2s infinite !important;
+}
+.doc-card, .lab-card{
+  animation: cardEntry 0.6s ease backwards !important;
+}
+.doc-card:nth-child(2){animation-delay:0.1s}
+.doc-card:nth-child(3){animation-delay:0.2s}
+.doc-card:nth-child(4){animation-delay:0.3s}
+.lab-card:nth-child(2){animation-delay:0.1s}
+.lab-card:nth-child(3){animation-delay:0.2s}
+.lab-card:nth-child(4){animation-delay:0.3s}
+.btn:hover{
+  transform:scale(1.03);
+  transition:0.2s;
+}
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
 body{background:#eef2ff;overflow-x:hidden}
 .hidden{display:none!important}
 @keyframes bg{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
 @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
 @keyframes up{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:translateY(0)}}
-#welcomePage,#loginPage{min-height:100vh;display:flex;align-items:center;justify-content:center;flex-direction:column;padding:20px}
-.login-card{background:#fff;padding:20px;border-radius:20px;width:100%;max-width:360px;text-align:center;animation:up .3s ease}
+#welcomePage,#loginPage{min-height:100vh;min-height:100dvh;display:flex;align-items:center;justify-content:center;flex-direction:column;padding:20px;background:linear-gradient(-45deg,#6a5af9,#a78bfa,#06b6d4,#6a5af9);background-size:400% 400%;animation:bg 8s ease infinite;text-align:center;color:#fff}
+.login-card{background:#fff;padding:20px;border-radius:20px;width:100%;max-width:360px;text-align:center;animation:up.5s ease;box-shadow:0 10px 25px rgba(0,0,0,.2)}
 input,select,textarea{width:100%;padding:10px;margin:6px 0;border:2px solid #eee;border-radius:10px}
 .btn{width:100%;padding:11px;background:#6a5af9;color:#fff;border:none;border-radius:10px;font-weight:bold;cursor:pointer}
 #homePage{max-width:1100px;margin:0 auto;background:#eef2ff;min-height:100vh}
-.header{background:#fff;padding:10px;display:flex;justify-content:space-between;position:sticky;top:0;z-index:10;box-shadow:0 2px 10px rgba(0,0,0,.1)}
-#doctorContainer,#labContainer{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:8px}
-.doc-card,.lab-card{background:#fff;padding:10px;border-radius:14px;text-align:center;box-shadow:0 2px 10px rgba(0,0,0,.05)}
+.header{background:#fff;padding:10px;display:flex;justify-content:space-between;position:sticky;top:0;z-index:10;box-shadow:0 2px 10px rgba(0,0,0,.08)}
+#doctorContainer,#labContainer{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:0 8px}
+.doc-card,.lab-card{background:#fff;padding:10px;border-radius:14px;text-align:center;box-shadow:0 2px 10px rgba(0,0,0,.06);animation:up.5s ease;transition:.25s}
 .doc-card:hover{transform:translateY(-4px)}
-.small{padding:6px 10px;background:red;color:#fff;border:none;border-radius:6px;cursor:pointer}
+.small{padding:6px 10px;background:red;color:#fff;border:none;border-radius:6px}
 .title{padding:12px 10px 5px;font-size:13px;font-weight:bold}
-.history-card{background:#fff;padding:8px;border-radius:8px;margin:6px 8px;display:flex;justify-content:space-between;align-items:center}
-.modal-bg{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;z-index:100}
-.modal{background:#fff;width:90%;max-width:350px;padding:16px;border-radius:16px;animation:up .3s ease}
-.footer{text-align:center;background:#fff;color:#6a5af9;font-size:9px;font-weight:bold;padding:10px;margin-top:12px;white-space:nowrap}
-@media(min-width:768px){#doctorContainer{grid-template-columns:repeat(4,1fr)}#labContainer{grid-template-columns:repeat(3,1fr)}}
+.history-card{background:#fff;padding:8px;border-radius:8px;margin:6px 8px;display:flex;justify-content:space-between;animation:up.4s ease}
+.modal-bg{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.5);display:flex;align-items:center;justify-content:center;z-index:20;padding:10px}
+.modal{background:#fff;width:100%;max-width:350px;padding:16px;border-radius:16px;animation:up.3s ease}
+.footer{text-align:center;background:#fff;color:#6a5af9;font-size:8px;font-weight:bold;padding:10px;margin-top:12px;white-space:nowrap}
+@media(min-width:768px){#doctorContainer{grid-template-columns:repeat(4,1fr)}#labContainer{grid-template-columns:repeat(4,1fr)}}
